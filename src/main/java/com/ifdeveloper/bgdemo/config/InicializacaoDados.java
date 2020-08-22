@@ -50,6 +50,12 @@ public class InicializacaoDados implements CommandLineRunner {
 				Arrays.asList(new JogadorDTO(patty), new JogadorDTO(bia)), Arrays.asList(new JogadorDTO(maia), new JogadorDTO(mule), new JogadorDTO(patty), new JogadorDTO(bia)), new JogadorDTO(bia));
 		
 		gameRepositorio.saveAll(Arrays.asList(game1, game2, game3));
+		
+		maia.getGames().addAll(Arrays.asList(game1));
+		caio.getGames().addAll(Arrays.asList(game2));
+		bia.getGames().addAll(Arrays.asList(game3));
+		
+		repositorio.saveAll(Arrays.asList(maia, caio, bia));
 	}
 
 }
