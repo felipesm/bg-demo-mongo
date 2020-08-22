@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.ifdeveloper.bgdemo.domain.GamePlay;
 import com.ifdeveloper.bgdemo.domain.Usuario;
+import com.ifdeveloper.bgdemo.dto.JogadorDTO;
 import com.ifdeveloper.bgdemo.repositories.GamePlayRepositorio;
 import com.ifdeveloper.bgdemo.repositories.UsuarioRepositorio;
 
@@ -37,11 +38,17 @@ public class InicializacaoDados implements CommandLineRunner {
 		Usuario mule = new Usuario(null, "Gabi Mule", "gabimule@gmail.com");
 		Usuario caio = new Usuario(null, "Caio Bode", "caiobode@yahoo.com");
 		
-		GamePlay game1 = new GamePlay(null, dateFormat.parse("08/01/2020"), "GamePlay Carcassonne", Arrays.asList(maia), Arrays.asList(maia, mule, caio, bia), maia);
-		GamePlay game2 = new GamePlay(null, dateFormat.parse("27/01/2020"), "Jogatina de Domingo - No Thanks", Arrays.asList(mule), Arrays.asList(maia, mule, caio, patty, bia), caio);
-		GamePlay game3 = new GamePlay(null, dateFormat.parse("03/03/2020"), "Ticket to Ride", Arrays.asList(patty, bia), Arrays.asList(maia, mule, patty, bia), bia);
-		
 		repositorio.saveAll(Arrays.asList(maia, mule, bia, caio, patty));
+		
+		GamePlay game1 = new GamePlay(null, dateFormat.parse("08/01/2020"), "GamePlay Carcassonne", Arrays.asList(new JogadorDTO(maia)), 
+				Arrays.asList(new JogadorDTO(maia), new JogadorDTO(mule), new JogadorDTO(caio), new JogadorDTO(bia)), new JogadorDTO(maia));
+		
+		GamePlay game2 = new GamePlay(null, dateFormat.parse("27/01/2020"), "Jogatina de Domingo - No Thanks", Arrays.asList(new JogadorDTO(mule)), 
+				Arrays.asList(new JogadorDTO(maia), new JogadorDTO(mule), new JogadorDTO(caio), new JogadorDTO(patty), new JogadorDTO(bia)), new JogadorDTO(caio));
+		
+		GamePlay game3 = new GamePlay(null, dateFormat.parse("03/03/2020"), "Ticket to Ride", 
+				Arrays.asList(new JogadorDTO(patty), new JogadorDTO(bia)), Arrays.asList(new JogadorDTO(maia), new JogadorDTO(mule), new JogadorDTO(patty), new JogadorDTO(bia)), new JogadorDTO(bia));
+		
 		gameRepositorio.saveAll(Arrays.asList(game1, game2, game3));
 	}
 

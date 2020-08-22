@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.ifdeveloper.bgdemo.dto.JogadorDTO;
+
 @Document
 public class GamePlay implements Serializable {
 
@@ -22,17 +24,17 @@ public class GamePlay implements Serializable {
 	/**
 	 * Atributo do tipo lista pois pode existir mais de um vencedor (empate).
 	 */
-	private List<Usuario> vencedor;
+	private List<JogadorDTO> vencedor;
 	
-	private List<Usuario> jogadores;
+	private List<JogadorDTO> jogadores;
 	
-	private Usuario criador;
+	private JogadorDTO criador;
 	
 	public GamePlay() {
 	}
 
-	public GamePlay(String id, Date date, String titulo, List<Usuario> vencedor,
-			List<Usuario> jogadores, Usuario criador) {
+	public GamePlay(String id, Date date, String titulo, List<JogadorDTO> vencedor,
+			List<JogadorDTO> jogadores, JogadorDTO criador) {
 		super();
 		this.id = id;
 		this.date = date;
@@ -66,27 +68,27 @@ public class GamePlay implements Serializable {
 		this.titulo = titulo;
 	}
 
-	public List<Usuario> getVencedor() {
+	public List<JogadorDTO> getVencedor() {
 		return vencedor;
 	}
 
-	public void setVencedor(List<Usuario> vencedor) {
+	public void setVencedor(List<JogadorDTO> vencedor) {
 		this.vencedor = vencedor;
 	}
 
-	public List<Usuario> getJogadores() {
+	public List<JogadorDTO> getJogadores() {
 		return jogadores;
 	}
 
-	public void setJogadores(List<Usuario> jogadores) {
+	public void setJogadores(List<JogadorDTO> jogadores) {
 		this.jogadores = jogadores;
 	}
 
-	public Usuario getCriador() {
+	public JogadorDTO getCriador() {
 		return criador;
 	}
 
-	public void setCriador(Usuario criador) {
+	public void setCriador(JogadorDTO criador) {
 		this.criador = criador;
 	}
 
