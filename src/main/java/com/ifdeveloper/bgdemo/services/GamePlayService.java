@@ -1,5 +1,6 @@
 package com.ifdeveloper.bgdemo.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +19,9 @@ public class GamePlayService {
 	public GamePlay buscarPorId(String id) {
 		Optional<GamePlay> game = repositorio.findById(id);
 		return game.orElseThrow(() -> new ObjectNotFoundException("GamePlay não encontrado através do Id: " + id));
+	}
+	
+	public List<GamePlay> buscarPorTitulo(String texto) {
+		return repositorio.pesquisarPorTitulo(texto);
 	}
 }
