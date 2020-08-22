@@ -29,4 +29,20 @@ public class UsuarioService {
 		return repositorio.insert(usuario);
 	}
 	
+	public Usuario atualizar(Usuario obj) {
+		Usuario usuario = buscarPorId(obj.getId());
+		atualizarDados(obj, usuario);
+		return repositorio.save(usuario);
+	}
+	
+	private void atualizarDados(Usuario novoUsuario, Usuario atualUsuario) {
+		atualUsuario.setNome(novoUsuario.getNome());
+		atualUsuario.setEmail(novoUsuario.getEmail());
+	}
+	
+	public void deletar(String id) {
+		buscarPorId(id);
+		repositorio.deleteById(id);
+	}
+	
 }
