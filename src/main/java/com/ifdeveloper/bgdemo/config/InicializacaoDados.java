@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.ifdeveloper.bgdemo.domain.GamePlay;
 import com.ifdeveloper.bgdemo.domain.Usuario;
+import com.ifdeveloper.bgdemo.dto.ComentarioDTO;
 import com.ifdeveloper.bgdemo.dto.JogadorDTO;
 import com.ifdeveloper.bgdemo.repositories.GamePlayRepositorio;
 import com.ifdeveloper.bgdemo.repositories.UsuarioRepositorio;
@@ -48,6 +49,22 @@ public class InicializacaoDados implements CommandLineRunner {
 		
 		GamePlay game3 = new GamePlay(null, dateFormat.parse("03/03/2020"), "Ticket to Ride", 
 				Arrays.asList(new JogadorDTO(patty), new JogadorDTO(bia)), Arrays.asList(new JogadorDTO(maia), new JogadorDTO(mule), new JogadorDTO(patty), new JogadorDTO(bia)), new JogadorDTO(bia));
+		
+		ComentarioDTO comentario1 = new ComentarioDTO("Mitei!", dateFormat.parse("08/01/2020"), new JogadorDTO(maia));
+		ComentarioDTO comentario2 = new ComentarioDTO("Foi muita sorte...", dateFormat.parse("08/01/2020"), new JogadorDTO(bia));
+		ComentarioDTO comentario3 = new ComentarioDTO("Dúvido ganhar de novo ¬¬", dateFormat.parse("09/01/2020"), new JogadorDTO(caio));
+		
+		ComentarioDTO comentario4 = new ComentarioDTO("Hahah arrasei", dateFormat.parse("28/01/2020"), new JogadorDTO(mule));
+		ComentarioDTO comentario5 = new ComentarioDTO("Fui pegar aquela carta, me ferrei kkk :(", dateFormat.parse("28/01/2020"), new JogadorDTO(maia));
+		ComentarioDTO comentario6 = new ComentarioDTO("Oxe essa doida é muito cagona", dateFormat.parse("28/01/2020"), new JogadorDTO(caio));
+		ComentarioDTO comentario7 = new ComentarioDTO("Felipe só faz besteira...", dateFormat.parse("28/01/2020"), new JogadorDTO(patty));
+		
+		ComentarioDTO comentario8 = new ComentarioDTO("Amandinha trapaceou kkk", dateFormat.parse("03/03/2020"), new JogadorDTO(bia));
+		ComentarioDTO comentario9 = new ComentarioDTO("Bia trapaceou kkkkk", dateFormat.parse("03/03/2020"), new JogadorDTO(patty));
+		
+		game1.getComentarios().addAll(Arrays.asList(comentario1, comentario2, comentario3));
+		game2.getComentarios().addAll(Arrays.asList(comentario4, comentario5, comentario6, comentario7));
+		game3.getComentarios().addAll(Arrays.asList(comentario8, comentario9));
 		
 		gameRepositorio.saveAll(Arrays.asList(game1, game2, game3));
 		
