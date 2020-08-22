@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.ifdeveloper.bgdemo.domain.GamePlay;
 import com.ifdeveloper.bgdemo.domain.Usuario;
 import com.ifdeveloper.bgdemo.dto.UsuarioDTO;
 import com.ifdeveloper.bgdemo.services.UsuarioService;
@@ -68,6 +69,13 @@ public class UsuarioResource {
 		service.deletar(id);
 		
 		return ResponseEntity.noContent().build();
+	}
+	
+	@RequestMapping(value = "/{id}/gameplay", method = RequestMethod.GET)
+	public ResponseEntity<List<GamePlay>> buscarGamePlay(@PathVariable String id) {
+		Usuario usuario = service.buscarPorId(id);
+		
+		return ResponseEntity.ok().body(usuario.getGames());
 	}
 
 }
