@@ -1,5 +1,6 @@
 package com.ifdeveloper.bgdemo.repositories;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -20,5 +21,8 @@ public interface GamePlayRepositorio extends MongoRepository<GamePlay, String> {
 	List<GamePlay> pesquisarPorTitulo(String texto);
 	
 	List<GamePlay> findByTituloContainingIgnoreCase(String texto);
+	
+	@Query("{ $and: [ {data: {$gte: ?1} }, {data: {$lte: ?2} }, { $or: [ { 'titulo': { $regex: ?0, $options: 'i' } }, { 'comentarios.texto': { $regex: ?0, $options: 'i' } } ] } ] }")
+	List<GamePlay> pesquisarPorTituloEData(String texto, Date dataInicial, Date dataFinal);
 
 }

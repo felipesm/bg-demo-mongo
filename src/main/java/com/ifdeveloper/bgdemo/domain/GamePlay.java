@@ -19,7 +19,7 @@ public class GamePlay implements Serializable {
 	@Id
 	private String id;
 
-	private Date date;
+	private Date data;
 	
 	private String titulo;
 	
@@ -37,11 +37,11 @@ public class GamePlay implements Serializable {
 	public GamePlay() {
 	}
 
-	public GamePlay(String id, Date date, String titulo, List<JogadorDTO> vencedor,
+	public GamePlay(String id, Date data, String titulo, List<JogadorDTO> vencedor,
 			List<JogadorDTO> jogadores, JogadorDTO criador) {
 		super();
 		this.id = id;
-		this.date = date;
+		this.data = data;
 		this.titulo = titulo;
 		this.vencedor = vencedor;
 		this.jogadores = jogadores;
@@ -56,12 +56,12 @@ public class GamePlay implements Serializable {
 		this.id = id;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getData() {
+		return data;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setData(Date data) {
+		this.data = data;
 	}
 
 	public String getTitulo() {

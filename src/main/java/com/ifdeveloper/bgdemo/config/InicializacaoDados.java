@@ -50,6 +50,12 @@ public class InicializacaoDados implements CommandLineRunner {
 		GamePlay game3 = new GamePlay(null, dateFormat.parse("03/03/2020"), "Ticket to Ride", 
 				Arrays.asList(new JogadorDTO(patty), new JogadorDTO(bia)), Arrays.asList(new JogadorDTO(maia), new JogadorDTO(mule), new JogadorDTO(patty), new JogadorDTO(bia)), new JogadorDTO(bia));
 		
+		GamePlay game4 = new GamePlay(null, dateFormat.parse("08/03/2020"), "Five Tribes", 
+				Arrays.asList(new JogadorDTO(maia)), Arrays.asList(new JogadorDTO(maia), new JogadorDTO(bia), new JogadorDTO(patty)), new JogadorDTO(maia));
+		
+		GamePlay game5 = new GamePlay(null, dateFormat.parse("16/03/2020"), "GamePlay Port Royal", 
+				Arrays.asList(new JogadorDTO(caio)), Arrays.asList(new JogadorDTO(maia), new JogadorDTO(bia), new JogadorDTO(patty), new JogadorDTO(caio)), new JogadorDTO(caio));
+		
 		ComentarioDTO comentario1 = new ComentarioDTO("Mitei!", dateFormat.parse("08/01/2020"), new JogadorDTO(maia));
 		ComentarioDTO comentario2 = new ComentarioDTO("Foi muita sorte...", dateFormat.parse("08/01/2020"), new JogadorDTO(bia));
 		ComentarioDTO comentario3 = new ComentarioDTO("Dúvido ganhar de novo ¬¬", dateFormat.parse("09/01/2020"), new JogadorDTO(caio));
@@ -66,10 +72,10 @@ public class InicializacaoDados implements CommandLineRunner {
 		game2.getComentarios().addAll(Arrays.asList(comentario4, comentario5, comentario6, comentario7));
 		game3.getComentarios().addAll(Arrays.asList(comentario8, comentario9));
 		
-		gameRepositorio.saveAll(Arrays.asList(game1, game2, game3));
+		gameRepositorio.saveAll(Arrays.asList(game1, game2, game3, game4, game5));
 		
-		maia.getGames().addAll(Arrays.asList(game1));
-		caio.getGames().addAll(Arrays.asList(game2));
+		maia.getGames().addAll(Arrays.asList(game1, game4));
+		caio.getGames().addAll(Arrays.asList(game2, game5));
 		bia.getGames().addAll(Arrays.asList(game3));
 		
 		repositorio.saveAll(Arrays.asList(maia, caio, bia));

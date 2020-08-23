@@ -1,5 +1,7 @@
 package com.ifdeveloper.bgdemo.services;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,5 +25,18 @@ public class GamePlayService {
 	
 	public List<GamePlay> buscarPorTitulo(String texto) {
 		return repositorio.pesquisarPorTitulo(texto);
+	}
+	
+	public List<GamePlay> pesquisarPorTituloEData(String texto, Date dataInicial, Date dataFinal) {
+		
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(dataFinal);
+		calendar.add(Calendar.HOUR, 23);
+		calendar.add(Calendar.MINUTE, 59);
+		calendar.add(Calendar.SECOND, 59);
+		
+		dataFinal = calendar.getTime();
+		
+		return repositorio.pesquisarPorTituloEData(texto, dataInicial, dataFinal);
 	}
 }
